@@ -43,12 +43,22 @@ class HBNBCommand(cmd.Cmd):
                 raise SyntaxError()
             my_list = line.split(" ")
             obj = eval("{}()".format(my_list[0]))
+            for x in my_list[1:]:
+                ag = x.split("=")
+                ag[1] = eval(ag[1])
+                if type(ag[1]) is str:
+                    ag[1] = ag[1].replace("_", " ")
+                setattr(obj, ag[0], ag[1])
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
             print("** class name missing **")
         except NameError:
             print("** class doesn't exist **")
+
+
+
+
 
     def do_show(self, line):
         """Prints the string representation of an instance
@@ -138,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_update(self, line):
-        """Updates an instanceby adding or updating attribute
+        """Updates an instance by adding or updating attribute
         Exceptions:
             SyntaxError: when there is no args given
             NameError: when there is no object taht has the name
