@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import models
-from models.amenity import Amenity
 from models.base_model import BaseModel, Base
 from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+from models.amenity import Amenity
 import sqlalchemy
 from os import getenv
 from sqlalchemy import create_engine
@@ -35,7 +35,7 @@ class DBStorage:
     def all(self, cls=None):
         """return objects by class """
         my_dict = {}
-        classes = [State, City, User, Place, Review]
+        classes = [State, City, User, Place, Review, Amenity]
         if cls:
             classes = [cls]
         for j in classes:
