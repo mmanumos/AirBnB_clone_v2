@@ -35,7 +35,7 @@ class DBStorage:
     def all(self, cls=None):
         """return objects by class """
         my_dict = {}
-        classes = [State, City, User]
+        classes = [State, City, User, Place]
         if cls:
             classes = [cls]
         for j in classes:
