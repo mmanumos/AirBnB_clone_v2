@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """This is the user class"""
 from models.base_model import Base, BaseModel
-from model_state import Base, State
 from sqlalchemy import Column, Integer, String
 
 
