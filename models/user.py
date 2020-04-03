@@ -2,6 +2,8 @@
 """This is the user class"""
 from models.base_model import Base, BaseModel
 from sqlalchemy import Column, Integer, String
+import sqlalchemy
+from sqlalchemy.orm import backref, relationship
 
 
 class User(BaseModel, Base):
@@ -17,3 +19,6 @@ class User(BaseModel, Base):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
+
+    reviews = relationship("Review", backref="user",
+                           cascade="all, delete, delete-orphan")
