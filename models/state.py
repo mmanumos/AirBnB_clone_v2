@@ -6,6 +6,7 @@ from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 
+
 class State(BaseModel, Base):
     """This is the class for State
     Attributes:
