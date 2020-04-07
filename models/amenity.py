@@ -3,6 +3,7 @@
 from models.base_model import Base, BaseModel
 from sqlalchemy import Column, String
 from sqlalchemy.orm import backref, relationship
+from os import getenv
 
 
 class Amenity(BaseModel, Base):
@@ -11,5 +12,8 @@ class Amenity(BaseModel, Base):
         name: input name
     """
     __tablename__ = 'amenities'
-    name = Column(String(128), nullable=False)
-#    place_amenities = relationship("place_amenity", secondary=place_amenity)
+    if getenv("HBNB_TYPE_STORAGE") == 'db':
+        name = Column(String(128), nullable=False)
+    else:
+        name = ""
+

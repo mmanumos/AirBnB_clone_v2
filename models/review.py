@@ -3,6 +3,7 @@
 from models.base_model import Base, BaseModel
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, ForeignKey
+from os import getenv
 
 
 class Review(BaseModel, Base):
@@ -13,6 +14,11 @@ class Review(BaseModel, Base):
         text: review description
     """
     __tablename__ = 'reviews'
-    text = Column(String(1024), nullable=False)
-    place_id = Column(String(60), ForeignKey('places.id'), nullable=True)
-    user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
+    if getenv("HBNB_TYPE_STORAGE") == 'db':
+        text = Column(String(1024), nullable=False)
+        place_id = Column(String(60), ForeignKey('places.id'), nullable=True)
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
+    else:
+        text = ""
+        place_id = ""
+        user_id = ""
