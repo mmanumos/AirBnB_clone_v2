@@ -10,6 +10,14 @@ from datetime import datetime
 env.hosts = ['35.231.24.237', '54.90.204.128']
 
 
+def deploy():
+    """ creates and distributes an archive to the web servers """
+    full_deploy = do_pack()
+    if full_deploy is False:
+        return False
+    else:
+        return do_deploy(full_deploy)
+
 def do_pack():
     """ Function that makes packages"""
     try:
@@ -45,12 +53,3 @@ def do_deploy(archive_path):
         return True
     except:
         return False
-
-
-def deploy():
-    """ creates and distributes an archive to the web servers """
-    full_deploy = do_pack()
-    if full_deploy is False:
-        return False
-    else:
-        return do_deploy(full_deploy)
