@@ -17,6 +17,7 @@ def deploy():
         return False
     return do_deploy(full_deploy)
 
+
 def do_pack():
     """ Function that makes packages"""
     try:
