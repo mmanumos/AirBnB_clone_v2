@@ -49,7 +49,8 @@ def do_deploy(archive_path):
 
 def deploy():
     """ creates and distributes an archive to the web servers """
-    if os.path.exists(do_pack()) is False:
+    full_deploy = do_pack()
+    if full_deploy is False:
         return False
     else:
-        return do_deploy()
+        return do_deploy(full_deploy)
