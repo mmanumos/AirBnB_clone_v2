@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 # Fabric script to deploy web_static to server
-
 from fabric.api import *
 import os
+from time import strftime as ti
 
 env.user = 'ubuntu'
-from time import strftime as ti
 env.hosts = ['34.73.242.80', '54.209.158.161']
 
 
