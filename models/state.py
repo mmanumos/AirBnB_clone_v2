@@ -21,14 +21,14 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-    @property
-    def cities(self):
-        """Setter Method to list cities"""
-        city_list = []
-        for key, value in models.storage.all().items():
-            try:
-                if value.state_id == self.id:
-                    city_list.append(value)
-            except BaseException:
-                pass
-        return city_list
+        @property
+        def cities(self):
+            """Setter Method to list cities"""
+            city_list = []
+            for key, value in models.storage.all().items():
+                try:
+                    if value.state_id == self.id:
+                        city_list.append(value)
+                except BaseException:
+                    pass
+            return city_list

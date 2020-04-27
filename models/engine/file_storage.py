@@ -72,4 +72,4 @@ class FileStorage:
             self.save()
 
     def close(self):
-        reload()
+        self.reload()
